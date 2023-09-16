@@ -63,7 +63,7 @@ const CoinInfo = ({ coin }) => {
   return (
     <ThemeProvider theme={darkTheme}>
       <div className={classes.container}>
-        {!historicData | flag===false ? (
+        {!historicData | (flag === false) ? (
           <CircularProgress
             style={{ color: "gold" }}
             size={250}
@@ -71,9 +71,7 @@ const CoinInfo = ({ coin }) => {
           />
         ) : (
           <>
-            
-          
-             <Line
+            <Line
               data={{
                 labels: historicData.map((coin) => {
                   let date = new Date(coin[0]);
@@ -99,7 +97,7 @@ const CoinInfo = ({ coin }) => {
                   },
                 },
               }}
-            /> 
+            />
             <div
               style={{
                 display: "flex",
