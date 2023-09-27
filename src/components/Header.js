@@ -12,6 +12,7 @@ import {
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { CryptoState } from "../CryptoContext";
+import AuthModal from "./Authentication/AuthModal";
 const useStyles = makeStyles(() => ({
   title: {
     flex: 1,
@@ -64,6 +65,7 @@ const Header = () => {
               <MenuItem value={"USD"}>USD</MenuItem>
               <MenuItem value={"TRY"}>TRY</MenuItem>
             </Select>
+            <AuthModal />
           </Toolbar>
         </Container>
       </AppBar>

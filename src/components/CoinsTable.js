@@ -1,7 +1,5 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-import { CoinList } from "../config/api";
 import { CryptoState } from "../CryptoContext";
 import {
   Container,
@@ -18,25 +16,17 @@ import {
   createTheme,
   makeStyles,
 } from "@material-ui/core";
-import { useNavigate , Link} from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { numberWithCommas } from "./Banner/Carousel";
 import { Pagination } from "@material-ui/lab";
 const CoinsTable = () => {
-  const [coins, setCoins] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
-  const { currency, symbol } = CryptoState();
+  const { currency, symbol, coins, loading, fetchCoins } = CryptoState();
   const [page, setPage] = useState(1);
   const navigate = useNavigate();
-  const fetchCoins = async () => {
-    setLoading(true);
-
-    const { data } = await axios.get(CoinList(currency));
-    setCoins(data);
-    setLoading(false);
-  };
 
   console.log(coins);
+  
   useEffect(() => {
     fetchCoins();
   }, [currency]);
@@ -131,7 +121,6 @@ const CoinsTable = () => {
                             gap: 15,
                           }}
                         >
-                          
                           <img
                             src={row?.image}
                             alt={row.name}
@@ -141,11 +130,12 @@ const CoinsTable = () => {
                           <div
                             style={{ display: "flex", flexDirection: "column" }}
                           >
-                            <Link to={`/coins/${row.id}`}
+                            <Link
+                              to={`/coins/${row.id}`}
                               style={{
                                 textTransform: "uppercase",
                                 fontSize: 22,
-                                color:"darkgrey"
+                                color: "darkgrey",
                               }}
                             >
                               {row.symbol}
