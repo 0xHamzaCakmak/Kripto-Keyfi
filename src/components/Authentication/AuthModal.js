@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
   },
   paper: {
-    width: 400,
+    width: 800,
     backgroundColor: theme.palette.background.paper,
     border: "2px solid #000",
     boxShadow: theme.shadows[5],
@@ -85,6 +85,7 @@ export default function AuthModal() {
             {value === 0 && <Login handleClose={handleClose} />}
             {value === 1 && <SignUp handleClose={handleClose} />}
           </div>
+          
         </Fade>
       </Modal>
     </div>
