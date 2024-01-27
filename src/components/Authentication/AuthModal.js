@@ -5,6 +5,7 @@ import Backdrop from "@material-ui/core/Backdrop";
 import { AppBar, Button, Fade, Tab, Tabs } from "@material-ui/core";
 import { Login } from "./Login";
 import { SignUp } from "./SignUp";
+import {Connect} from "./ConnectWallet";
 const useStyles = makeStyles((theme) => ({
   modal: {
     display: "flex",
@@ -80,10 +81,15 @@ export default function AuthModal() {
               >
                 <Tab label="Login" />
                 <Tab label="Sign Up" />
+                <Tab label="Connect Wallet" />
+
+
               </Tabs>
             </AppBar>
             {value === 0 && <Login handleClose={handleClose} />}
             {value === 1 && <SignUp handleClose={handleClose} />}
+            {value === 2 && <Connect handleClose={handleClose} />}
+
           </div>
           
         </Fade>
